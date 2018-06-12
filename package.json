@@ -1,0 +1,49 @@
+{
+	"name": "korail",
+	"description": "Client for the South Korean korail railway API.",
+	"version": "0.0.0",
+	"keywords": [
+		"korail",
+		"train",
+		"rail",
+		"korea",
+		"south",
+		"south korea",
+		"railway",
+		"fptf",
+		"asia"
+	],
+	"author": "Julius Tens <mail@juliustens.eu>",
+	"homepage": "https://github.com/juliuste/korail",
+	"repository": "juliuste/korail",
+	"bugs": "https://github.com/juliuste/korail/issues",
+	"main": "./index.js",
+	"files": [
+		"index.js",
+		"lib/*"
+	],
+	"dependencies": {
+		"got": "^8.3.1",
+		"lodash.groupby": "^4.6.0",
+		"lodash.isboolean": "^3.0.3",
+		"lodash.isdate": "^4.0.1",
+		"lodash.isobject": "^3.0.2",
+		"lodash.isstring": "^4.0.1",
+		"lodash.merge": "^4.6.1",
+		"lodash.sortby": "^4.7.0",
+		"lodash.toarray": "^4.4.0",
+		"moment-timezone": "^0.5.17"
+	},
+	"devDependencies": {
+		"tape": "^4.9.1",
+		"validate-fptf": "^2.0.1"
+	},
+	"scripts": {
+		"test": "node test.js",
+		"prepare": "npm test"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"license": "ISC"
+}
