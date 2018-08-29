@@ -50,8 +50,8 @@ korail.journeys(seoul, busan, new Date(), {direct: true, product: 'KTX'})
                     name: "서울",
                     location: {
                         type: "location",
-                        longitude: "126.9708191",
-                        latitude: "37.551856"
+                        longitude: 126.9708191,
+                        latitude: 37.551856
                     },
                     group: "7",
                     major: "1"
@@ -62,8 +62,8 @@ korail.journeys(seoul, busan, new Date(), {direct: true, product: 'KTX'})
                     name: "부산",
                     location: {
                         type: "location",
-                        longitude: "129.0415717",
-                        latitude: "35.1150906"
+                        longitude: 129.0415717,
+                        latitude: 35.1150906
                     },
                     group: "6",
                     major: "21"

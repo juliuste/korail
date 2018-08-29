@@ -20,8 +20,8 @@ korail.stations()
         name: "가야",
         location: {
             type: "location",
-            longitude: "129.0395387",
-            latitude: "35.1609769"
+            longitude: 129.0395387,
+            latitude: 35.1609769
         },
         group: "1"
     },
@@ -31,8 +31,8 @@ korail.stations()
         name: "가평",
         location: {
             type: "location",
-            longitude: "127.5133331",
-            latitude: "37.8243821"
+            longitude: 127.5133331,
+            latitude: 37.8243821
         },
         group: "1"
     },
@@ -42,8 +42,8 @@ korail.stations()
         name: "각계",
         location: {
             type: "location",
-            longitude: "127.7254118",
-            latitude: "36.2082396"
+            longitude: 127.7254118,
+            latitude: 36.2082396
         },
         group: "1"
     }
