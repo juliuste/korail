@@ -1,7 +1,7 @@
 {
 	"name": "korail",
 	"description": "Client for the South Korean korail railway API.",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"keywords": [
 		"korail",
 		"train",
