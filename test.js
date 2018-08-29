@@ -1,7 +1,7 @@
 'use strict'
 
 const tape = require('tape')
-const validate = require('validate-fptf')
+const validate = require('validate-fptf')()
 const moment = require('moment-timezone')
 const isObject = require('lodash/isObject')
 const korail = require('./index')
@@ -68,7 +68,7 @@ tape('korail.journeys', async (t) => {
 		validate(journey)
 		t.ok(journey.legs.length > 1, 'legs length')
 		for (let leg of journey.legs) {
-			t.ok(+new Date(leg.departure) - (+when) <= 12*60*60*1000, 'leg departure')
+			t.ok(+new Date(leg.departure) - (+when) <= 24*60*60*1000, 'leg departure')
 			t.ok(leg.mode === 'train', 'leg mode')
 			t.ok(leg.operator === 'korail', 'leg operator')
 			t.ok(leg.line.type === 'line', 'leg line type')

@@ -25,7 +25,8 @@
 	"dependencies": {
 		"got": "^9.1.0",
 		"lodash": "^4.17.10",
-		"moment-timezone": "^0.5.21"
+		"moment-timezone": "^0.5.21",
+		"slugg": "^1.2.1"
 	},
 	"devDependencies": {
 		"tape": "^4.9.1",
