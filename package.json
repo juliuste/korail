@@ -23,20 +23,13 @@
 		"lib/*"
 	],
 	"dependencies": {
-		"got": "^8.3.1",
-		"lodash.groupby": "^4.6.0",
-		"lodash.isboolean": "^3.0.3",
-		"lodash.isdate": "^4.0.1",
-		"lodash.isobject": "^3.0.2",
-		"lodash.isstring": "^4.0.1",
-		"lodash.merge": "^4.6.1",
-		"lodash.sortby": "^4.7.0",
-		"lodash.toarray": "^4.4.0",
-		"moment-timezone": "^0.5.17"
+		"got": "^9.1.0",
+		"lodash": "^4.17.10",
+		"moment-timezone": "^0.5.21"
 	},
 	"devDependencies": {
 		"tape": "^4.9.1",
-		"validate-fptf": "^2.0.1"
+		"validate-fptf": "^2.1.1"
 	},
 	"scripts": {
 		"test": "node test.js",

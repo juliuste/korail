@@ -3,7 +3,7 @@
 const tape = require('tape')
 const validate = require('validate-fptf')
 const moment = require('moment-timezone')
-const isObject = require('lodash.isobject')
+const isObject = require('lodash/isObject')
 const korail = require('./index')
 
 tape('korail.stations', async (t) => {
