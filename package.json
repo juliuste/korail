@@ -17,10 +17,12 @@
 	"homepage": "https://github.com/juliuste/korail",
 	"repository": "juliuste/korail",
 	"bugs": "https://github.com/juliuste/korail/issues",
-	"main": "./index.js",
+	"main": "./dist/index.js",
+	"module": "./index.js",
 	"files": [
 		"index.js",
-		"lib/*"
+		"lib/*",
+		"dist"
 	],
 	"dependencies": {
 		"got": "^9.2.2",
@@ -29,11 +31,15 @@
 		"slugg": "^1.2.1"
 	},
 	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-es2015": "^6.24.1",
 		"tape": "^4.9.1",
 		"validate-fptf": "^2.1.1"
 	},
 	"scripts": {
 		"test": "node test.js",
+		"transpile": "babel index.js lib/* --presets babel-preset-es2015 --out-dir dist",
+		"prepare": "npm run transpile",
 		"prepublishOnly": "npm test"
 	},
 	"engines": {
