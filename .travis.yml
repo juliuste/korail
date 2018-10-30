@@ -4,5 +4,3 @@ node_js:
   - 'stable'
   - '10'
   - '8'
-script:
-  - npm run transpile && npm run test
