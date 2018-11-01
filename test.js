@@ -4,7 +4,7 @@ const tapeWithoutPromise = require('tape')
 const addPromiseSupport = require('tape-promise').default
 const tape = addPromiseSupport(tapeWithoutPromise)
 const validate = require('validate-fptf')()
-const moment = require('moment-timezone')
+const { DateTime } = require('luxon')
 const isObject = require('lodash/isObject')
 const korail = require('.')
 
@@ -30,7 +30,7 @@ const isBusan = (s) => (s.name === '부산')
 const isMokpo = (s) => (s.name === '목포')
 
 tape('korail.journeys', async (t) => {
-	const when = moment.tz('Asia/Seoul').startOf('day').add(10, 'days').add(8, 'hours').toDate()
+	const when = DateTime.fromJSDate(new Date(), { zone: 'Asia/Seoul' }).plus({ days: 10 }).startOf('day').plus({ hours: 8 }).toJSDate()
 
 	// Seoul -> Busan, direct, KTX
 	const j1 = await korail.journeys('0001', { id: '0020', type: 'station' }, when, { direct: true, product: 'KTX' })
@@ -91,7 +91,7 @@ tape('korail.journeys', async (t) => {
 })
 
 tape('korail.journeyLeg', async (t) => {
-	const when = moment.tz('Asia/Seoul').add(10, 'days').startOf('day').toDate()
+	const when = DateTime.fromJSDate(new Date(), { zone: 'Asia/Seoul' }).plus({ days: 10 }).startOf('day').toJSDate()
 
 	const s = await korail.journeyLeg('524', when)
 	t.ok(s.length > 5, 'journeyLeg length')
