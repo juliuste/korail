@@ -12,7 +12,7 @@ tape('korail.stations', async (t) => {
 	const s = await korail.stations()
 	t.ok(s.length > 100, 'stations length')
 
-	for(let station of s) {
+	for (let station of s) {
 		validate(station)
 		t.ok(station.location.longitude > 100, 'station location longitude')
 		t.ok(station.group.length >= 1, 'station group')
@@ -33,15 +33,15 @@ tape('korail.journeys', async (t) => {
 	const when = moment.tz('Asia/Seoul').startOf('day').add(10, 'days').add(8, 'hours').toDate()
 
 	// Seoul -> Busan, direct, KTX
-	const j1 = await korail.journeys('0001', {id: '0020', type: 'station'}, when, {direct: true, product: 'KTX'})
+	const j1 = await korail.journeys('0001', { id: '0020', type: 'station' }, when, { direct: true, product: 'KTX' })
 	t.ok(j1.length >= 5, 'journeys length')
-	for(let journey of j1) {
+	for (let journey of j1) {
 		validate(journey)
 		t.ok(journey.legs.length === 1, 'legs length')
 		const leg = journey.legs[0]
 		t.ok(isSeoul(leg.origin), 'leg origin')
 		t.ok(isBusan(leg.destination), 'leg destination')
-		t.ok(+new Date(leg.departure) - (+when) <= 12*60*60*1000, 'leg departure')
+		t.ok(+new Date(leg.departure) - (+when) <= 12 * 60 * 60 * 1000, 'leg departure')
 		t.ok(leg.mode === 'train', 'leg mode')
 		t.ok(leg.operator === 'korail', 'leg operator')
 		t.ok(leg.line.type === 'line', 'leg line type')
@@ -60,17 +60,17 @@ tape('korail.journeys', async (t) => {
 	}
 
 	// Mokpo -> Busan, direct
-	const j2 = await korail.journeys({id: '0041', type: 'station'}, '0020', when, {direct: true})
+	const j2 = await korail.journeys({ id: '0041', type: 'station' }, '0020', when, { direct: true })
 	t.ok(j2.length === 0, 'journeys length')
 
 	// Mokpo -> Busan, not direct
-	const j3 = await korail.journeys({id: '0041', type: 'station'}, '0020', when)
+	const j3 = await korail.journeys({ id: '0041', type: 'station' }, '0020', when)
 	t.ok(j3.length > 0, 'journeys length')
-	for(let journey of j3) {
+	for (let journey of j3) {
 		validate(journey)
 		t.ok(journey.legs.length > 1, 'legs length')
 		for (let leg of journey.legs) {
-			t.ok(+new Date(leg.departure) - (+when) <= 24*60*60*1000, 'leg departure')
+			t.ok(+new Date(leg.departure) - (+when) <= 24 * 60 * 60 * 1000, 'leg departure')
 			t.ok(leg.mode === 'train', 'leg mode')
 			t.ok(leg.operator === 'korail', 'leg operator')
 			t.ok(leg.line.type === 'line', 'leg line type')
@@ -103,12 +103,12 @@ tape('korail.journeyLeg', async (t) => {
 		// check departure/arrival
 		t.ok(stopover.departure || stopover.arrival, 'departure/arrival')
 		if (stopover.arrival) {
-			t.ok(Math.abs(+new Date(stopover.arrival) - (+when) <= 24*60*60*1000), 'arrival')
+			t.ok(Math.abs(+new Date(stopover.arrival) - (+when) <= 24 * 60 * 60 * 1000), 'arrival')
 		}
 		if (stopover.departure) {
-			t.ok(Math.abs(+new Date(stopover.departure) - (+when) <= 24*60*60*1000), 'departure')
+			t.ok(Math.abs(+new Date(stopover.departure) - (+when) <= 24 * 60 * 60 * 1000), 'departure')
 		}
-		if (stopover.arrival && stopover.departure) {
+		if (stopover.arrival && stopover.departure) {
 			t.ok(+new Date(stopover.arrival) <= +new Date(stopover.departure), 'arrival before departure')
 		}
 	}

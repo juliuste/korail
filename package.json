@@ -26,8 +26,8 @@
 	"module": "./lib/index.js",
 	"scripts": {
 		"check-deps": "depcheck --ignores='babel-*'",
-		"fix": "eslint --fix lib",
-		"lint": "eslint lib",
+		"fix": "eslint --fix lib test.js",
+		"lint": "eslint lib test.js",
 		"prepare": "npm run transpile",
 		"prepublishOnly": "npm test",
 		"test": "npm run lint && npm run check-deps && npm run transpile && node test",
