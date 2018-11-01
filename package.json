@@ -1,28 +1,38 @@
 {
 	"name": "korail",
-	"description": "Client for the South Korean korail railway API.",
 	"version": "0.1.1",
+	"description": "Client for the South Korean korail railway API.",
 	"keywords": [
+		"asia",
+		"fptf",
 		"korail",
-		"train",
-		"rail",
 		"korea",
+		"rail",
+		"railway",
 		"south",
 		"south korea",
-		"railway",
-		"fptf",
-		"asia"
+		"train"
 	],
-	"author": "Julius Tens <mail@juliustens.eu>",
 	"homepage": "https://github.com/juliuste/korail",
-	"repository": "juliuste/korail",
 	"bugs": "https://github.com/juliuste/korail/issues",
-	"main": "./dist/index.js",
-	"module": "./lib/index.js",
+	"repository": "juliuste/korail",
+	"license": "ISC",
+	"author": "Julius Tens <mail@juliustens.eu>",
 	"files": [
 		"lib/*",
 		"dist/*"
 	],
+	"main": "./dist/index.js",
+	"module": "./lib/index.js",
+	"scripts": {
+		"check-deps": "depcheck --ignores='babel-*'",
+		"fix": "eslint --fix lib",
+		"lint": "eslint lib",
+		"prepare": "npm run transpile",
+		"prepublishOnly": "npm test",
+		"test": "npm run lint && npm run check-deps && npm run transpile && node test",
+		"transpile": "babel lib --presets babel-preset-es2015 --out-dir dist"
+	},
 	"dependencies": {
 		"got": "^9.2.2",
 		"lodash": "^4.17.11",
@@ -32,6 +42,7 @@
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
 		"babel-preset-es2015": "^6.24.1",
+		"depcheck": "^0.6.11",
 		"eslint": "^5.8.0",
 		"eslint-config-standard": "^12.0.0",
 		"eslint-plugin-import": "^2.14.0",
@@ -41,15 +52,7 @@
 		"tape": "^4.9.1",
 		"validate-fptf": "^2.1.1"
 	},
-	"scripts": {
-		"lint": "eslint lib",
-		"test": "npm run lint && npm run transpile && node test",
-		"transpile": "babel lib --presets babel-preset-es2015 --out-dir dist",
-		"prepare": "npm run transpile",
-		"prepublishOnly": "npm test"
-	},
 	"engines": {
 		"node": ">=8"
-	},
-	"license": "ISC"
+	}
 }
