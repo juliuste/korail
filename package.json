@@ -34,9 +34,10 @@
 		"transpile": "babel lib --presets babel-preset-es2015 --out-dir dist"
 	},
 	"dependencies": {
-		"got": "^9.2.2",
+		"fetch-ponyfill": "^6.0.2",
 		"lodash": "^4.17.11",
 		"luxon": "^1.4.5",
+		"query-string": "^6.2.0",
 		"slugg": "^1.2.1"
 	},
 	"devDependencies": {
