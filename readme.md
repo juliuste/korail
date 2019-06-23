@@ -35,7 +35,7 @@ Method | Feature description | [FPTI-JS `0.3.2`](https://github.com/public-trans
 
 ### `stations.all([opt])`
 
-Get **all** stations of the *Korail* network, such as `Berlin central bus station` or `Frankfurt Hbf`. See [this method in the FPTI-JS `0.3.2` spec](https://github.com/public-transport/fpti-js/blob/0.3.2/docs/stations-stops-regions.all.md).
+Get **all** stations of the *Korail* network, such as `서울`, `부산` or `목포`. See [this method in the FPTI-JS `0.3.2` spec](https://github.com/public-transport/fpti-js/blob/0.3.2/docs/stations-stops-regions.all.md).
 
 #### Supported Options
 
