@@ -5,7 +5,6 @@ const addPromiseSupport = require('tape-promise').default
 const tape = addPromiseSupport(tapeWithoutPromise)
 const validate = require('validate-fptf')()
 const { DateTime } = require('luxon')
-const isObject = require('lodash/isObject')
 const fptiTests = require('fpti-tests')
 const getStream = require('get-stream').array
 
@@ -123,26 +122,15 @@ tape('korail.journeys opt.interval', async t => {
 	t.ok(journeysWithIntervalDayAfterWhen.length > 0, 'number of journeys')
 })
 
-tape('korail.journeyLeg', async (t) => {
-	const when = DateTime.fromJSDate(new Date(), { zone: 'Asia/Seoul' }).plus({ days: 10 }).startOf('day').toJSDate()
+tape('korail.tripStopovers', async (t) => {
+	const mokpo = '0041'
+	const busan = '0020'
 
-	const s = await korail.journeyLeg('524', when)
-	t.ok(s.length > 5, 'journeyLeg length')
+	const journeys = await korail.journeys(mokpo, busan, { when })
+	const tripId = journeys[0].legs[0].tripId
+	t.ok(typeof tripId === 'string' && tripId.length > 0, 'precondition')
 
-	for (let stopover of s) {
-		t.ok(isObject(stopover.station) && stopover.station.type === 'station', 'station')
-		validate(stopover.station)
-
-		// check departure/arrival
-		t.ok(stopover.departure || stopover.arrival, 'departure/arrival')
-		if (stopover.arrival) {
-			t.ok(Math.abs(+new Date(stopover.arrival) - (+when) <= 24 * 60 * 60 * 1000), 'arrival')
-		}
-		if (stopover.departure) {
-			t.ok(Math.abs(+new Date(stopover.departure) - (+when) <= 24 * 60 * 60 * 1000), 'departure')
-		}
-		if (stopover.arrival && stopover.departure) {
-			t.ok(+new Date(stopover.arrival) <= +new Date(stopover.departure), 'arrival before departure')
-		}
-	}
+	const tripStopovers = await korail.tripStopovers(tripId)
+	t.ok(tripStopovers.length > 5, 'number of stopovers')
+	for (let stopover of tripStopovers) t.doesNotThrow(() => validate(stopover), 'valid fptf')
 })
