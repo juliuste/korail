@@ -5,7 +5,6 @@ JavaScript client for the South Korean 🇰🇷 [korail](https://www.letskorail.
 [![npm version](https://img.shields.io/npm/v/korail.svg)](https://www.npmjs.com/package/korail)
 [![Build Status](https://travis-ci.org/juliuste/korail.svg?branch=master)](https://travis-ci.org/juliuste/korail)
 [![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/korail.svg)](https://greenkeeper.io/)
-[![dependency status](https://img.shields.io/david/juliuste/korail.svg)](https://david-dm.org/juliuste/korail)
 [![license](https://img.shields.io/github/license/juliuste/korail.svg?style=flat)](license)
 [![fptf version](https://fptf.badges.juliustens.eu/badge/juliuste/korail)](https://fptf.badges.juliustens.eu/link/juliuste/korail)
 [![chat on gitter](https://badges.gitter.im/juliuste.svg)](https://gitter.im/juliuste)
