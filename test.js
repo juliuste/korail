@@ -6,23 +6,33 @@ const tape = addPromiseSupport(tapeWithoutPromise)
 const validate = require('validate-fptf')()
 const { DateTime } = require('luxon')
 const isObject = require('lodash/isObject')
+const fptiTests = require('fpti-tests')
+const getStream = require('get-stream').array
+
 const korail = require('.')
+const pkg = require('./package.json')
 
-tape('korail.stations', async (t) => {
-	const s = await korail.stations()
-	t.ok(s.length > 100, 'stations length')
+tape('korail fpti tests', async t => {
+	await t.doesNotReject(fptiTests.packageJson(pkg), 'valid package.json')
+	t.doesNotThrow(() => fptiTests.packageExports(korail, ['stations.all', 'journeys']), 'valid module exports')
+	t.doesNotThrow(() => fptiTests.stationsAllFeatures(korail.stations.all.features, []), 'valid stations.all features')
+})
 
-	for (let station of s) {
-		validate(station)
+tape('korail.stations.all', async t => {
+	const stations = await getStream(korail.stations.all())
+
+	// base-check all stations
+	t.ok(stations.length > 100, 'number of stations')
+	for (let station of stations) {
+		t.doesNotThrow(() => validate(station), 'valid fptf')
 		t.ok(station.location.longitude > 100, 'station location longitude')
 		t.ok(station.group.length >= 1, 'station group')
 	}
 
-	const busan = s.find(x => x.name === '부산')
+	// deep-check busan station
+	const busan = stations.find(x => x.name === '부산')
 	t.ok(!!busan, 'busan found')
 	t.ok(!!busan.major, 'busan major')
-
-	t.end()
 })
 
 const isSeoul = (s) => (s.name === '서울')
