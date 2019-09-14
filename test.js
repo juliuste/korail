@@ -26,7 +26,7 @@ tape('korail.stations.all', async t => {
 
 	// base-check all stations
 	t.ok(stations.length > 100, 'number of stations')
-	for (let station of stations) {
+	for (const station of stations) {
 		t.doesNotThrow(() => validate(station), 'valid fptf')
 		t.ok(station.location.longitude > 100, 'station location longitude')
 		t.ok(station.group.length >= 1, 'station group')
@@ -44,14 +44,14 @@ tape('korail.journeys non-direct', async t => {
 
 	const journeys = await korail.journeys(mokpo, busan, { when })
 	t.ok(journeys.length > 0, 'number of journeys')
-	for (let journey of journeys) {
+	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
 		t.ok(isStationWithName(journey.legs[0].origin, '목포'), 'origin')
 		t.ok(isStationWithName(journey.legs[journey.legs.length - 1].destination, '부산'), 'destination')
 		t.ok(+new Date(journey.legs[0].departure) >= +when, 'departure')
 
 		t.ok(journey.legs.length > 1, 'legs length')
-		for (let leg of journey.legs) {
+		for (const leg of journey.legs) {
 			t.ok(leg.mode === 'train', 'leg mode')
 			t.ok(leg.operator.id === 'korail', 'leg operator')
 			t.doesNotThrow(() => validate(leg.line), 'valid fptf')
@@ -63,7 +63,7 @@ tape('korail.journeys non-direct', async t => {
 	}
 	const journeysWithPrice = journeys.filter(j => j.price)
 	t.ok(journeysWithPrice.length === 0, 'number of journeys with price')
-	for (let journey of journeysWithPrice) {
+	for (const journey of journeysWithPrice) {
 		t.ok(journey.price.amount > 0, 'price amount')
 		t.ok(journey.price.currency === 'KRW', 'price currency')
 	}
@@ -75,7 +75,7 @@ tape('korail.journeys opt.product, opt.departureAfter', async t => {
 
 	const journeys = await korail.journeys(seoul, busan, { departureAfter: when, transfers: 0, product: 'KTX' })
 	t.ok(journeys.length >= 5, 'number of journeys')
-	for (let journey of journeys) {
+	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
 		t.ok(isStationWithName(journey.legs[0].origin, '서울'), 'origin')
 		t.ok(isStationWithName(journey.legs[journey.legs.length - 1].destination, '부산'), 'destination')
@@ -101,7 +101,7 @@ tape('korail.journeys opt.transfers', async t => {
 
 	const journeysWithTransfer = await korail.journeys(mokpo, busan, { when, transfers: 2 })
 	t.ok(journeysWithTransfer.length > 0, 'number of journeys')
-	for (let journey of journeysWithTransfer) t.doesNotThrow(() => validate(journey), 'valid fptf')
+	for (const journey of journeysWithTransfer) t.doesNotThrow(() => validate(journey), 'valid fptf')
 })
 
 tape('korail.journeys opt.interval', async t => {
@@ -110,13 +110,13 @@ tape('korail.journeys opt.interval', async t => {
 	const dayAfterWhen = DateTime.fromJSDate(when, { zone: 'Asia/Seoul' }).plus({ days: 1 }).toJSDate()
 
 	const journeysWithoutInterval = await korail.journeys(mokpo, busan, { when })
-	for (let journey of journeysWithoutInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
+	for (const journey of journeysWithoutInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
 	t.ok(journeysWithoutInterval.length > 0, 'precondition')
 	const journeysWithoutIntervalDayAfterWhen = journeysWithoutInterval.filter(journey => +new Date(journey.legs[0].departure) >= +dayAfterWhen)
 	t.ok(journeysWithoutIntervalDayAfterWhen.length === 0, 'number of journeys')
 
 	const journeysWithInterval = await korail.journeys(mokpo, busan, { when, interval: 30 * 60 }) // journeys for the next 30h
-	for (let journey of journeysWithInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
+	for (const journey of journeysWithInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
 	t.ok(journeysWithInterval.length > 0, 'precondition')
 	const journeysWithIntervalDayAfterWhen = journeysWithInterval.filter(journey => +new Date(journey.legs[0].departure) >= +dayAfterWhen)
 	t.ok(journeysWithIntervalDayAfterWhen.length > 0, 'number of journeys')
@@ -132,5 +132,5 @@ tape('korail.tripStopovers', async (t) => {
 
 	const tripStopovers = await korail.tripStopovers(tripId)
 	t.ok(tripStopovers.length > 5, 'number of stopovers')
-	for (let stopover of tripStopovers) t.doesNotThrow(() => validate(stopover), 'valid fptf')
+	for (const stopover of tripStopovers) t.doesNotThrow(() => validate(stopover), 'valid fptf')
 })
