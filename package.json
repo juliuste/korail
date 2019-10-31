@@ -37,9 +37,9 @@
 		"fetch-ponyfill": "^6.1.0",
 		"fpti-util": "^0.1.0",
 		"get-stream": "^5.1.0",
-		"into-stream": "^5.1.0",
+		"into-stream": "^5.1.1",
 		"lodash": "^4.17.15",
-		"luxon": "^1.17.3",
+		"luxon": "^1.21.0",
 		"query-string": "^6.8.3",
 		"slugg": "^1.2.1"
 	},
@@ -47,19 +47,19 @@
 		"babel-cli": "^6.26.0",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"babel-preset-es2015": "^6.24.1",
-		"depcheck": "^0.8.3",
-		"eslint": "^6.4.0",
+		"depcheck": "^0.8.4",
+		"eslint": "^6.6.0",
 		"eslint-config-standard": "^14.1.0",
 		"eslint-plugin-import": "^2.18.2",
 		"eslint-plugin-node": "^10.0.0",
 		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-standard": "^4.0.1",
-		"fpti-tests": "^0.0.0",
+		"fpti-tests": "0.0.0",
 		"tape": "^4.11.0",
 		"tape-promise": "^4.0.0",
 		"validate-fptf": "^3.0.0"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=10"
 	}
 }
