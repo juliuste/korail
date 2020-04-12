@@ -40,7 +40,7 @@
 		"into-stream": "^5.1.1",
 		"lodash": "^4.17.15",
 		"luxon": "^1.21.0",
-		"query-string": "^6.8.3",
+		"query-string": "^6.12.1",
 		"slugg": "^1.2.1"
 	},
 	"devDependencies": {
