@@ -6,7 +6,6 @@ This module conforms to the [FPTI-JS `0.3.2` standard](https://github.com/public
 
 [![npm version](https://img.shields.io/npm/v/korail.svg)](https://www.npmjs.com/package/korail)
 [![Build Status](https://travis-ci.org/juliuste/korail.svg?branch=master)](https://travis-ci.org/juliuste/korail)
-[![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/korail.svg)](https://greenkeeper.io/)
 [![license](https://img.shields.io/github/license/juliuste/korail.svg?style=flat)](license)
 [![fpti-js version](https://fpti-js.badges.juliustens.eu/badge/juliuste/korail)](https://fpti-js.badges.juliustens.eu/link/juliuste/korail)
 [![chat on gitter](https://badges.gitter.im/juliuste.svg)](https://gitter.im/juliuste)

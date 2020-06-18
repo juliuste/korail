@@ -9,5 +9,4 @@
 /shrinkwrap.yaml
 /package-lock.json
 
-/.nyc_output
 /dist
