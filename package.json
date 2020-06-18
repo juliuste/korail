@@ -26,8 +26,8 @@
 	],
 	"scripts": {
 		"check-deps": "depcheck --ignores='babel-*'",
-		"fix": "eslint --fix lib test.js",
-		"lint": "eslint lib test.js",
+		"fix": "eslint --fix lib test.js example.js",
+		"lint": "eslint lib test.js example.js",
 		"prepare": "npm run transpile",
 		"prepublishOnly": "npm test",
 		"test": "npm run lint && npm run check-deps && npm run transpile && node test",
